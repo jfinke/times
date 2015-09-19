@@ -1,4 +1,5 @@
 library(shiny)
+library(xtable)
 
 # Define UI for application that calculates total times
 shinyUI(fluidPage(

@@ -1,5 +1,6 @@
 library(shiny)
 library(lubridate)
+library(xtable)
 
 # Define server logic required to output table
 
@@ -17,7 +18,8 @@ shinyServer(function(input, output) {
     input$pseconds
   })
   
-  totalsec <- (pminutes * 60)+(pseconds) # Calculate total seconds
+  totalsec <- (5 * 60)+(31) # Calculate total seconds
+  #totalsec <- (pminutes * 60)+(pseconds) # Calculate total seconds
   
   # Calculate time for distance
   fivek<-(totalsec * 3.1069)
@@ -28,15 +30,15 @@ shinyServer(function(input, output) {
   mara<-(totalsec * 26.21875)
   
   # Covert to human readable time
-  fivek<-round(seconds_to_period(fivek))
-  fivem<-round(seconds_to_period(fivem))
-  tenk<-round(seconds_to_period(tenk))
-  tenm<-round(seconds_to_period(tenm))
-  halfmara<-round(seconds_to_period(halfmara))
-  mara<-round(seconds_to_period(mara))
+  fivekr<-as.character(round(seconds_to_period(fivek)))
+  fivemr<-as.character(round(seconds_to_period(fivem)))
+  tenkr<-as.character(round(seconds_to_period(tenk)))
+  tenmr<-as.character(round(seconds_to_period(tenm)))
+  halfmarar<-as.character(round(seconds_to_period(halfmara)))
+  marar<-as.character(round(seconds_to_period(mara)))
   
   # Add to Dataframe
-  chart<-data.frame(fivek, fivem, tenk, tenm, halfmara, mara)
+  chart<-data.frame(fivekr, fivemr, tenkr, tenmr, halfmarar, marar)
   # Add Colnames
   colnames(chart) <- c("5 K", "5 Miles", "10 K", "10 Miles", "Half Marathon", "Marathon")
   
