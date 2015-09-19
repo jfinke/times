@@ -49,9 +49,10 @@ shinyServer(function(input, output) {
   
   
   
-  output$mytable1 <- renderDataTable({
+  output$mytable1 <- renderTable({
     chart()
     
-  })
+  },
+  include.rownames=FALSE)
   
 })
