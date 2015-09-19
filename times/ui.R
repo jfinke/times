@@ -1,18 +1,23 @@
 library(shiny)
 
-# Define UI for application that draws a histogram
+# Define UI for application that calculates total times
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Hello Shiny!"),
+  titlePanel("Calculate Total Race Times"),
   
-  # Sidebar with a slider input for the number of bins
+  # Sidebar with a slider inputs for the pace
   sidebarLayout(
     sidebarPanel(
-      sliderInput("bins",
-                  "Number of bins:",
+      sliderInput("pminutes",
+                  "Pace Minutes:",
                   min = 1,
-                  max = 50,
+                  max = 20,
+                  value = 8),
+      sliderInput("pseconds",
+                  "Pace Seconds:",
+                  min = 0,
+                  max = 59,
                   value = 30)
     ),
     
