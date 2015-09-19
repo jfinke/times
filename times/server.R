@@ -10,16 +10,13 @@ shinyServer(function(input, output) {
   
   # Reactive Calls
   
-  pminutes <- reactive({
+  chart <- reactive({
     pminutes<-input$pminutes
-  })
-  
-  pseconds <- reactive({
     pseconds<-input$pseconds
-  })
+
   
   #totalsec <- (5 * 60)+(31) # Calculate total seconds
-  totalsec <- (as.numeric(pminutes) * 60)+(as.numeric(pseconds)) # Calculate total seconds
+  totalsec <- (pminutes * 60)+(pseconds) # Calculate total seconds
   
   # Calculate time for distance
   fivek<-(totalsec * 3.1069)
@@ -36,14 +33,24 @@ shinyServer(function(input, output) {
   tenmr<-as.character(round(seconds_to_period(tenm)))
   halfmarar<-as.character(round(seconds_to_period(halfmara)))
   marar<-as.character(round(seconds_to_period(mara)))
+
+  data.frame(
+    Name = c("5 K", "5 Miles", "10 K", "10 Miles", "Half Marathon", "Marathon"),
+    Value = as.character(c(fivekr, 
+                           fivemr,
+                           tenkr,
+                           tenmr,
+                           halfmarar,
+                           marar)), 
+    stringsAsFactors=FALSE)
+  }) 
   
-  # Add to Dataframe
-  chart<-data.frame(fivekr, fivemr, tenkr, tenmr, halfmarar, marar)
-  # Add Colnames
-  colnames(chart) <- c("5 K", "5 Miles", "10 K", "10 Miles", "Half Marathon", "Marathon")
+  #})
+  
+  
   
   output$mytable1 <- renderDataTable({
-    chart
+    chart()
     
   })
   
