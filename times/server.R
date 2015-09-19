@@ -10,14 +10,14 @@ shinyServer(function(input, output) {
   # Reactive Calls
   
   pminutes <- reactive({
-    pminutes <- as.numeric(input$pminutes)
+    input$pminutes
   })
   
   pseconds <- reactive({
-    pseconds <- as.numeric(input$pseconds)
+    input$pseconds
   })
   
-  totalsec <- (pminutes*60)+(pseconds) # Calculate total seconds
+  totalsec <- (pminutes * 60)+(pseconds) # Calculate total seconds
   
   # Calculate time for distance
   fivek<-(totalsec * 3.1069)
