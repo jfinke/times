@@ -11,15 +11,15 @@ shinyServer(function(input, output) {
   # Reactive Calls
   
   pminutes <- reactive({
-    input$pminutes
+    pminutes<-input$pminutes
   })
   
   pseconds <- reactive({
-    input$pseconds
+    pseconds<-input$pseconds
   })
   
-  totalsec <- (5 * 60)+(31) # Calculate total seconds
-  #totalsec <- (pminutes * 60)+(pseconds) # Calculate total seconds
+  #totalsec <- (5 * 60)+(31) # Calculate total seconds
+  totalsec <- (as.numeric(pminutes) * 60)+(as.numeric(pseconds)) # Calculate total seconds
   
   # Calculate time for distance
   fivek<-(totalsec * 3.1069)
@@ -47,21 +47,4 @@ shinyServer(function(input, output) {
     
   })
   
-  
-  
-#   
-#   # Expression that generates a histogram. The expression is
-#   # wrapped in a call to renderPlot to indicate that:
-#   #
-#   #  1) It is "reactive" and therefore should re-execute automatically
-#   #     when inputs change
-#   #  2) Its output type is a plot
-#   
-#   output$distPlot <- renderPlot({
-#     x    <- faithful[, 2]  # Old Faithful Geyser data
-#     bins <- seq(min(x), max(x), length.out = input$bins + 1)
-#     
-#     # draw the histogram with the specified number of bins
-#     hist(x, breaks = bins, col = 'darkgray', border = 'white')
-#   })
 })
