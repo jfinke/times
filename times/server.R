@@ -7,7 +7,17 @@ library(lubridate)
 
 shinyServer(function(input, output) {
   
-  totalsec <- (input$pminutes*60)+(input$pseconds) #grab input
+  # Reactive Calls
+  
+  pminutes <- reactive({
+    pminutes <- as.numeric(input$pminutes)
+  })
+  
+  pseconds <- reactive({
+    pseconds <- as.numeric(input$pseconds)
+  })
+  
+  totalsec <- (pminutes*60)+(pseconds) # Calculate total seconds
   
   # Calculate time for distance
   fivek<-(totalsec * 3.1069)
@@ -25,8 +35,13 @@ shinyServer(function(input, output) {
   halfmara<-round(seconds_to_period(halfmara))
   mara<-round(seconds_to_period(mara))
   
+  # Add to Dataframe
+  chart<-data.frame(fivek, fivem, tenk, tenm, halfmara, mara)
+  # Add Colnames
+  colnames(chart) <- c("5 K", "5 Miles", "10 K", "10 Miles", "Half Marathon", "Marathon")
+  
   output$mytable1 <- renderDataTable({
-    
+    chart
     
   })
   
