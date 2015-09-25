@@ -35,8 +35,8 @@ shinyServer(function(input, output) {
   marar<-as.character(round(seconds_to_period(mara)))
 
   data.frame(
-    Name = c("5 K", "5 Miles", "10 K", "10 Miles", "Half Marathon", "Marathon"),
-    Value = as.character(c(fivekr, 
+    Distance = c("5 K", "5 Miles", "10 K", "10 Miles", "Half Marathon", "Marathon"),
+    Time = as.character(c(fivekr, 
                            fivemr,
                            tenkr,
                            tenmr,

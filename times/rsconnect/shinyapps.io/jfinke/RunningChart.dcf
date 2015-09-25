@@ -1,8 +1,8 @@
 name: RunningChart
 account: jfinke
 server: shinyapps.io
-bundleId: 269281
+bundleId: 269283
 url: https://jfinke.shinyapps.io/RunningChart
-when: 1442690365.09634
+when: 1442691008.04767
 asMultiple: FALSE
 asStatic: FALSE
