@@ -1,5 +1,6 @@
 library(shiny)
-library(xtable)
+#library(xtable)
+library(markdown)
 
 # Define UI for application that calculates total times
 shinyUI(fluidPage(
@@ -11,7 +12,8 @@ shinyUI(fluidPage(
     sidebarLayout(
       sidebarPanel(  
   numericInput("pminutes", label = h4("Minutes"), value = 8),
-  numericInput("pseconds", label = h4("Seconds"), value = 30)
+  numericInput("pseconds", label = h4("Seconds"), value = 30),
+  includeMarkdown("help.md")
   ),
   
     mainPanel(
