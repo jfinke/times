@@ -5,6 +5,8 @@ The pace is inputed in miles per minute.  The user can either type in the minute
 
 There is no realistic limit.  In other words, the user can input a pace of 0 minutes and 30 seconds.  No human could run that fast.  This does not calculate predictions, only multiples out the pace by the distance.
 
+A copy of the source code can be found at: https://github.com/jfinke/times
+
 This is a reactive interaction.  There is no need to have a submit button.  The app automatically recalculates when the user changes the minute or second fields.
 ```{r}
 # Some example calculations
